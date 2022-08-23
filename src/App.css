@@ -1,10 +1,11 @@
 .App {
-  width: 1200px;
+  width: 1000px;
   text-align: center;  
   margin: 0 auto;
+  color: black;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 200px 800px;
 }
