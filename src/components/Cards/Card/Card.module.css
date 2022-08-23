@@ -1,17 +1,21 @@
+.card {
+    margin-bottom: 20px;
+}
+
 .cardHeader {
     display: flex;
     justify-content: space-between;
     background-color: #1E90FF;
     color: white;
-    height: px;
+    height: 60px;
     align-items: center;
     margin-bottom: 20px;
 }
 
 .cardLogo {
     display: inline-block;
-    width: 150px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     padding-left: 20px;
 }
 
@@ -21,6 +25,12 @@
     font-size: 26px;
     line-height: 0;
 }
+.line {
+    height: 2px;
+    border: none;
+    color: #1E90FF;
+    background-color: #1E90FF;
+}
 
 .price span {
     font-size: 12px;
@@ -28,4 +38,52 @@
 
 .arrivalAirportCode {
     color: #1E90FF;
+}
+
+.flightOutTime {
+    display: flex;
+    justify-content: space-around;
+}
+
+.isChange {
+    color: orange;
+    position: relative;
+    line-height: 1.5;
+}
+
+.isChange span {
+    background-color: #fff;
+    padding: 0 15px;
+}
+
+.isChange::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(207, 206, 206);
+    width: 600px;
+    height: 1px;
+    top: 14px;
+    left: 100px;
+    z-index: -1;
+}
+
+.isChange hr {
+    width: 600px;
+    margin: 10px auto;
+}
+
+.carrier {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.cardBtn {
+    width: 100%;
+    border: none;
+    background-color: orange;
+    padding: 10px 0;
+    text-transform: uppercase;
+    color: white;
+    margin: 10px 0;
+    cursor: pointer;
 }
