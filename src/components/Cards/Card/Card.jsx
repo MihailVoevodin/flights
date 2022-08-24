@@ -5,11 +5,8 @@ import FlightOut from './FlightOut/FlightOut';
 import FlightReturn from './FlightReturn/FlightReturn';
 
 
-const Card = (props) => {
-
-    const { flights } = props.store
-    
-    console.log(flights)
+const Card = ({flights, filters}) => {
+  
     return (
         <div>
             {flights.map(flight => <div className={styles.card} key={flight.flightToken}>
