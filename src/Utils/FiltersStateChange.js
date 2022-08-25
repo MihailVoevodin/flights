@@ -1,3 +1,4 @@
+// Функция меняющая локальный стейт фильтров 
 export const onFiltersChange = (event, filters, setFilters) => {
     if (event.target.id === 'withTransfer') {
         if (filters.withTransfer === true) {

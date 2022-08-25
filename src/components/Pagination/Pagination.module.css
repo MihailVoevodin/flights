@@ -1,0 +1,23 @@
+.paginationList {
+    list-style: none;
+    padding: 0;
+    align-items: center;
+}
+
+.paginationItem {
+    display: inline-block;
+    margin: 10px 1px;
+}
+
+.paginationItem a {
+    text-decoration: none;
+    margin: 10px 1px;
+    padding: 0 5px;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.paginationItem .active {
+    color: #1E90FF;
+    border-color: #1E90FF;
+}

@@ -1,10 +1,12 @@
 import data from './flights.json';
 
-
+// Имитация state`а
 export let store = data.flights;
-console.log(store[0].flight.legs[0].segments.length)
 
 
+// Функции сортировки и фильтрации state`а
+
+// Сортировка
 export const doFlightsSorting = (store, sortType) => {
     if (sortType === 'radio-1') {
         store.sort((a, b) => a.flight.price.total.amount - b.flight.price.total.amount)
@@ -13,28 +15,40 @@ export const doFlightsSorting = (store, sortType) => {
         store.sort((a, b) => b.flight.price.total.amount - a.flight.price.total.amount)
         return store
     } else if (sortType === 'radio-3') {
-        store.sort((a, b) => (a.flight.legs[0].duration + a.flight.legs[1].duration) - (b.flight.legs[0].duration + b.flight.legs[1].duration))
-        return store
+        return store.sort((a, b) => (a.flight.legs[0].duration + a.flight.legs[1].duration) - (b.flight.legs[0].duration + b.flight.legs[1].duration))
     }
 
 }
 
-export const filterWithTransfer = (store, filters) => {
-    return store.filter(f => f.flight.legs[0].segments.length === 2)
+// Фильтрация по чекбоксам с пересадкой или без
+export const filterIsTransfer = (store, filters) => {
+    if (filters.withTransfer && filters.withoutTransfer) {
+        return store
+    }
+    if (filters.withTransfer) {
+        return store.filter(f => f.flight.legs[0].segments.length === 2)
+    } else if (filters.withoutTransfer) {
+        return store.filter(f => f.flight.legs[0].segments.length === 1)
+    } 
+    return store
 }
 
-export const filterWithoutTransfer = (store, filters) => {
-    return store.filter(f => f.flight.legs[0].segments.length === 1)
+// Фильтрация по авиакомпании
+export const filterAirCompany = (store, filters) => {
+    if (filters.airCompanyLOT && filters.airCompanyAeroflot) {
+        const LOTData = store.filter(f => f.flight.carrier.caption === 'LOT Polish Airlines')
+        const AeroflotData = store.filter(f => f.flight.carrier.caption === 'Аэрофлот - российские авиалинии')
+        return [...LOTData, ...AeroflotData]
+    }
+    if (filters.airCompanyLOT) {
+        return store.filter(f => f.flight.carrier.caption === 'LOT Polish Airlines') 
+    } else if (filters.airCompanyAeroflot) {
+        return store.filter(f => f.flight.carrier.caption === 'Аэрофлот - российские авиалинии')
+    }
+    return store
 }
 
-export const filterAirCompanyLOT = (store, filters) => {
-    return store.filter(f => f.flight.carrier.caption === 'LOT Polish Airlines')
-}
-
-export const filterAirCompanyAeroflot = (store, filters) => {
-    return store.filter(f => f.flight.carrier.caption === 'Аэрофлот - российские авиалинии')
-}
-
+// Фильтрация по цене
 export const filterPrice = (store, priceFrom, priceTo) => {
     if (Number(priceTo) >= 22000) {
         return store.filter(f => (f.flight.price.total.amount > priceFrom && f.flight.price.total.amount < priceTo));
