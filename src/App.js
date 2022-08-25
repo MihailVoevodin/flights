@@ -2,13 +2,13 @@ import { useState } from 'react';
 import './App.css';
 import CardsList from './components/Cards/CardsList';
 import Sidebar from './components/Sidebar/Sidebar';
-import { doFlightsSorting, filterAirCompany, filterAirCompanyAeroflot, filterAirCompanyLOT, filterIsTransfer, filterPrice, filterWithoutTransfer, filterWithTransfer, store } from './store';
+import { radioBtnsTypes } from './Consts/radioBtnTypes';
+import { doFlightsSorting, filterAirCompany, filterIsTransfer, filterPrice } from './Utils/SortAndFilters';
+import { store } from './store';
 import { onFiltersChange } from './Utils/FiltersStateChange';
 
-
 function App() {
-  // сделать енам с айдишниками радио
-  const [sortType, setsortType] = useState('radio-1')
+  const [sortType, setsortType] = useState(radioBtnsTypes.INCREASE_PRICE)
   const [filters, setFilters] = useState({
     withTransfer: false,
     withoutTransfer: false,
@@ -27,7 +27,7 @@ function App() {
   const onFilters = (event) => {
     onFiltersChange(event, filters, setFilters)
   }
-  
+
   flights = filterPrice(store, Number(filters.priceFrom), Number(filters.priceTo))
   flights = filterIsTransfer(flights, filters)
   flights = filterAirCompany(flights, filters)
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <div className='layout'>
         <Sidebar onSortChange={onSortChange} sortType={sortType} onFilters={onFilters} filters={filters}/>
-        <CardsList flights={flights} filters={filters}/>
+        <CardsList flights={flights}/>
       </div>
     </div>
   );

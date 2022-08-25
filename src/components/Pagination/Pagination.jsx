@@ -9,8 +9,6 @@ const Pagination = ({flightsPerPage, totalFlightsLength, currentPage, paginate})
         pageNumbers.push(i)
     }
 
-    console.log(pageNumbers)
-
     return (
         <div>
             <ul className={styles.paginationList}>
