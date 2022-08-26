@@ -25,7 +25,7 @@ export const filterIsTransfer = (store, filters) => {
     if (filters.withTransfer) {
         return store.filter(flight => flight.flight.legs[0].segments.length === 2)
     } else if (filters.withoutTransfer) {
-        return store.filter(flight => flight.flight.legs[0].segments.length === 1)
+        return store.filter(flight => flight.flight.legs[0].segments.length === 1 && flight.flight.legs[1].segments.length === 1)
     } 
     return store
 }

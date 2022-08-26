@@ -26,7 +26,7 @@ const FlightReturn = (props) => {
                 <div>{getTimeFromMins(props.flight.flight.legs[1].duration)}</div>
                 <div>{formatterArrivalDate(props.flight, 1)}</div>
             </div>
-            {props.flight.flight.legs[0].segments.length > 1
+            {props.flight.flight.legs[1].segments.length > 1
                 ? <div className={props.styles.isChange}><span>1 пересадка</span></div>
                 : <hr className={props.styles.transferLine}></hr>}
             <div className={props.styles.carrier}>
