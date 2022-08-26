@@ -18,17 +18,20 @@ const Sidebar = ({ onSortChange, sortType, onFilters, filters }) => {
                     styles={styles}
                     onSortChange={onSortChange}
                     sortType={sortType}
-                    radioBtnsTypes={radioBtnsTypes.INCREASE_PRICE} />
+                    radioBtnsTypes={radioBtnsTypes.INCREASE_PRICE} 
+                    value={' - по возрастанию цены'}/>
                 <RadioButton
                     styles={styles}
                     onSortChange={onSortChange}
                     sortType={sortType}
-                    radioBtnsTypes={radioBtnsTypes.DECREASE_PRICE} />
+                    radioBtnsTypes={radioBtnsTypes.DECREASE_PRICE} 
+                    value={' - по убыванию цены'}/>
                 <RadioButton
                     styles={styles}
                     onSortChange={onSortChange}
                     sortType={sortType}
-                    radioBtnsTypes={radioBtnsTypes.TIME} />
+                    radioBtnsTypes={radioBtnsTypes.TIME} 
+                    value={' - по времени в пути'}/>
             </div>
             <div className={styles.filters}>
                 <div>

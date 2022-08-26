@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RadioButton = ({onSortChange, radioBtnsTypes, styles, sortType}) => {
+const RadioButton = ({onSortChange, radioBtnsTypes, styles, sortType, value}) => {
 
     return (
         <div className={styles.formRadio}>
@@ -9,7 +9,7 @@ const RadioButton = ({onSortChange, radioBtnsTypes, styles, sortType}) => {
                 type="radio"
                 value={radioBtnsTypes}
                 checked={sortType === radioBtnsTypes} />
-            <label htmlFor={radioBtnsTypes}> - по возрастанию цены</label>
+            <label htmlFor={radioBtnsTypes}>{value}</label>
         </div>
     )
 }
